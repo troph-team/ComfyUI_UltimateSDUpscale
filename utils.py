@@ -452,9 +452,9 @@ def crop_cond(cond, region, init_size, canvas_size, tile_size, w_pad=0, h_pad=0)
     for emb, x in cond:
         cond_dict = x.copy()
         n = [emb, cond_dict]
-        crop_controlnet(cond_dict, region, init_size, canvas_size, tile_size, w_pad, h_pad)
-        crop_gligen(cond_dict, region, init_size, canvas_size, tile_size, w_pad, h_pad)
-        crop_area(cond_dict, region, init_size, canvas_size, tile_size, w_pad, h_pad)
-        crop_mask(cond_dict, region, init_size, canvas_size, tile_size, w_pad, h_pad)
+        # crop_controlnet(cond_dict, region, init_size, canvas_size, tile_size, w_pad, h_pad)
+        # crop_gligen(cond_dict, region, init_size, canvas_size, tile_size, w_pad, h_pad)
+        # crop_area(cond_dict, region, init_size, canvas_size, tile_size, w_pad, h_pad)
+        # crop_mask(cond_dict, region, init_size, canvas_size, tile_size, w_pad, h_pad)
         cropped.append(n)
     return cropped

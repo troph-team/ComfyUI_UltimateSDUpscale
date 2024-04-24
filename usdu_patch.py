@@ -17,8 +17,8 @@ old_init = usdu.USDUpscaler.__init__
 
 
 def new_init(self, p, image, upscaler_index, save_redraw, save_seams_fix, tile_width, tile_height):
-    p.width = math.ceil((image.width * p.upscale_by) / 8) * 8
-    p.height = math.ceil((image.height * p.upscale_by) / 8) * 8
+    p.width = int(image.width * p.upscale_by)
+    p.height = int(image.height * p.upscale_by)
     old_init(self, p, image, upscaler_index, save_redraw, save_seams_fix, tile_width, tile_height)
 
 
@@ -30,8 +30,8 @@ old_setup_redraw = usdu.USDURedraw.init_draw
 
 def new_setup_redraw(self, p, width, height):
     mask, draw = old_setup_redraw(self, p, width, height)
-    p.width = math.ceil((self.tile_width + self.padding) / 8) * 8
-    p.height = math.ceil((self.tile_height + self.padding) / 8) * 8
+    p.width = int(self.tile_width + self.padding)
+    p.height = int(self.tile_height + self.padding)
     return mask, draw
 
 
@@ -43,8 +43,8 @@ old_setup_seams_fix = usdu.USDUSeamsFix.init_draw
 
 def new_setup_seams_fix(self, p):
     old_setup_seams_fix(self, p)
-    p.width = math.ceil((self.tile_width + self.padding) / 8) * 8
-    p.height = math.ceil((self.tile_height + self.padding) / 8) * 8
+    p.width = int(self.tile_width + self.padding)
+    p.height = self.tile_height + self.padding
 
 
 usdu.USDUSeamsFix.init_draw = new_setup_seams_fix

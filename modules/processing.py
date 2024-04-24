@@ -90,8 +90,8 @@ def process_images(p: StableDiffusionProcessing) -> Processed:
         x1, y1, x2, y2 = crop_region
         crop_width = x2 - x1
         crop_height = y2 - y1
-        target_width = math.ceil(crop_width / 8) * 8
-        target_height = math.ceil(crop_height / 8) * 8
+        target_width = crop_width#math.ceil(crop_width / 8) * 8
+        target_height = crop_height#math.ceil(crop_height / 8) * 8
         crop_region, tile_size = expand_crop(crop_region, image_mask.width,
                                              image_mask.height, target_width, target_height)
 
